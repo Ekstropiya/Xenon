@@ -27,6 +27,9 @@ services:
       - "443:443"
     environment:
       - "XENON_DB_HOST=postgres"
+      - "XENON_LOG_CONSOLE=${LOGGING_CONSOLE:-true}"
+      - "XENON_LOG_DATABASE=${LOGGING_DATABASE:-true}"
+      - "XENON_ADDR_PORT=${PORT:-7000}"
     stdin_open: true
     tty: true
 

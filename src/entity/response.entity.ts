@@ -23,7 +23,7 @@ export class Response {
     request: Request;
 
     @OneToMany(() => ResponseHeader, header => header.parent, {cascade: true, eager: true})
-    headers: ResponseHeader[]
+    headers: ResponseHeader[];
 
     addHeader(header: ResponseHeader) {
         if (this.headers === null) {

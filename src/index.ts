@@ -27,7 +27,7 @@ const ssl = {
         username: process.env["XENON_DB_USERNAME"],
         password: process.env["XENON_DB_PASSWORD"],
         database: "xenon_db",
-        logging: true,
+        logging: false,
         synchronize: true,
         entities: [
             "./**/*.entity.js"
@@ -37,10 +37,14 @@ const ssl = {
     const middle = async (ctx) => {
         setTimeout(async () => {
             // Log request to console. Looks pretty cool.
-            if (config.logging["console"]) console.log(formatRequest(ctx));
+            if (config.logging["console"]) {
+                console.log(formatRequest(ctx));
+            }
 
             // Return if some wimp doesn't want database logging.
-            if (!config.logging["database"]) return;
+            if (!config.logging["database"]) {
+                return;
+            }
 
             const req = new Request();
             const res = new Response();
@@ -93,8 +97,7 @@ const ssl = {
                 res.payload = resP;
             }
 
-            await db.getRepository(Request).save(req).catch(() => {
-            });
+            await db.getRepository(Request).save(req).catch(() => {});
         }, 0);
     };
 
@@ -104,7 +107,7 @@ const ssl = {
     const proxy = new Corrosion({
         prefix: "/p/",
         codec: "xor",
-        responseMiddleware: [middle]
+        responseMiddleware: [ middle ],
     });
 
     proxy.bundleScripts();
@@ -115,7 +118,7 @@ const ssl = {
 
     // This is for all requests to "/", it will try to resolve files from
     // the public directory.
-    app.use("/", express.static(__dirname + "/../public"))
+    app.use("/", express.static(__dirname + "/../public"));
 
     // This is for proxy requests, it doesn't do anything if the request
     // doesn't start with the configured prefix.
