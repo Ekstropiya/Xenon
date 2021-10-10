@@ -8,7 +8,7 @@ services:
       dockerfile: database.dockerfile
     restart: unless-stopped
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
     volumes:
       - db:/var/lib/postgresql
     ports:
@@ -25,6 +25,7 @@ services:
       - "${APP_PORT:-7000}:7000"
     environment:
       - "XENON_DB_HOST=postgres"
+      - "XENON_DB_PASSWORD=${DB_PASSWORD:-postgres}"
       - "XENON_LOG_CONSOLE=${LOGGING_CONSOLE:-true}"
       - "XENON_LOG_DATABASE=${LOGGING_DATABASE:-true}"
     stdin_open: true
