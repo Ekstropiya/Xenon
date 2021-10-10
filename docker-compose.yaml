@@ -12,7 +12,7 @@ services:
     volumes:
       - db:/var/lib/postgresql
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
 
   app:
     container_name: xenon_app
@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: docker/xenon.dockerfile
     ports:
-      - "7000:${PORT:-7000}"
+      - "${APP_PORT:-7000}:7000"
     environment:
       - "XENON_DB_HOST=postgres"
       - "XENON_LOG_CONSOLE=${LOGGING_CONSOLE:-true}"

@@ -179,7 +179,8 @@ $ export OPTION=VALUE
 | -------------------: | :------ | --------------------------------------------------------------- |
 |  ``LOGGING_CONSOLE`` | Boolean | Whether or not to log basic request information to the console. |
 | ``LOGGING_DATABASE`` | Boolean | Whether or not to log all request information to the database.  |
-|             ``PORT`` | Integer | Which port to expose the website on.                            |
+|          ``DB_PORT`` | Integer | Which port to expose the database on.                           |
+|         ``APP_PORT`` | Integer | Which port to expose the website on.                            |
 
 3. Deploy the Docker composition.
 
