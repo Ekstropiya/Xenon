@@ -19,7 +19,7 @@ services:
     depends_on:
       - postgres
     build:
-      context: .
+      context: ./docker
       dockerfile: docker/xenon.dockerfile
     ports:
       - "${APP_PORT:-7000}:7000"
