@@ -1,0 +1,5 @@
+/.git
+/*.md
+/build
+/node_modules
+/ormconfig.json

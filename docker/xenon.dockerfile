@@ -1,0 +1,23 @@
+FROM node:16.10-alpine3.11
+
+ENV XENON_ADDR_RANGE=0.0.0.0
+ENV XENON_ADDR_PORT=7000
+ENV XENON_LOG_CONSOLE=true
+ENV XENON_LOG_DATABASE=true
+ENV XENON_DB_HOST=0.0.0.0
+ENV XENON_DB_PORT=5432
+ENV XENON_DB_USERNAME=postgres
+ENV XENON_DB_PASSWORD=postgres
+
+WORKDIR /usr/src/app
+
+COPY ../package.json .
+
+RUN npm install
+
+ADD .. /usr/src/app
+
+RUN npm run build
+
+CMD [ "npm", "run", "start" ]
+EXPOSE $XENON_ADDR_PORT

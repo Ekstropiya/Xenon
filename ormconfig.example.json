@@ -1,0 +1,13 @@
+{
+    "type": "postgres",
+    "host": "s1.tvanderb.dev",
+    "port": 4001,
+    "username": "postgres",
+    "password": "12345",
+    "database": "xenon",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+        "./**/*.entity.js"
+    ]
+ }

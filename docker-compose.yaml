@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: xenon_postgres
+    build:
+      context: docker
+      dockerfile: database.dockerfile
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  app:
+    container_name: xenon_app
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: docker/xenon.dockerfile
+    ports:
+      - "7000:7000"
+      - "80:80"
+      - "443:443"
+    environment:
+      - "XENON_DB_HOST=postgres"
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:
