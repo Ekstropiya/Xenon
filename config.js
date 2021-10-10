@@ -17,6 +17,7 @@ module.exports = {
 
 // Uncomment if not using docker.
 // module.exports = {
+//     "container": false,
 //     "ssl": {
 //         "use": true,
 //         "cert": "ssl.cert",

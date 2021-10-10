@@ -1,0 +1,14 @@
+[Unit]
+Description=Very awesome web proxy.
+Documentation=https://github.com/Ekstropiya/Xenons
+After=network.target
+
+[Service]
+Type=simple
+User=xenon
+WorkingDirectory=/home/xenon/app
+ExecStart=/usr/bin/npm run start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
