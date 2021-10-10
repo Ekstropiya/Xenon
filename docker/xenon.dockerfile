@@ -11,11 +11,11 @@ ENV XENON_DB_PASSWORD=postgres
 
 WORKDIR /usr/src/app
 
-COPY ../package.json .
+COPY ./package.json .
 
 RUN npm install
 
-ADD .. /usr/src/app
+ADD . /usr/src/app
 
 RUN npm run build
 
