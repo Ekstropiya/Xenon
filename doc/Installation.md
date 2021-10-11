@@ -106,7 +106,7 @@ Since we're not using Docker, uncomment the bottom ``module.exports`` and commen
 module.exports = {
     "container": false, // Don't change.
     "ssl": {
-        "use": true, // Whether or not to use SSL. Change to false if you plan on using a reverse proxy.
+        "use": true, // Whether or not to use SSL. If you use a reverse proxy *with* SSL, you'll want this enabled. Otherwise, disable it.
         "cert": "ssl.cert", // Path to SSL certificate in xenon/ssl directory.
         "key": "ssl.key", // Path to SSL key in xenon/ssl directory.
     },
@@ -167,7 +167,7 @@ Now you should be able to launch Xenon from systemd:
 
 ###### Instructions
 
-1. Set configuration options **(optional)**.
+2. Set configuration options **(optional)**.
 
 ```
 $ export OPTION=VALUE
@@ -175,15 +175,16 @@ $ export OPTION=VALUE
 
 ###### Available Options
 
-|                 Name | Type    | Description                                                     |
-| -------------------: | :------ | --------------------------------------------------------------- |
-|  ``LOGGING_CONSOLE`` | Boolean | Whether or not to log basic request information to the console. |
-| ``LOGGING_DATABASE`` | Boolean | Whether or not to log all request information to the database.  |
-|          ``DB_PORT`` | Integer | Which port to expose the database on.                           |
-|      ``DB_PASSWORD`` | String  | Postgres user password for database. Defaults to 'postgres'.    |
-|         ``APP_PORT`` | Integer | Which port to expose the website on.                            |
+|                 Name | Type    | Description                                                                                       |
+| -------------------: | :------ | ------------------------------------------------------------------------------------------------- |
+|  ``LOGGING_CONSOLE`` | Boolean | Whether or not to log basic request information to the console.                                   |
+| ``LOGGING_DATABASE`` | Boolean | Whether or not to log all request information to the database.                                    |
+|          ``DB_PORT`` | Integer | Which port to expose the database on.                                                             |
+|      ``DB_PASSWORD`` | String  | Postgres user password for database. Defaults to 'postgres'.                                      |
+|         ``APP_PORT`` | Integer | Which port to expose the website on.                                                              |
+|          ``USE_SSL`` | Boolean | Whether or not to use SSL. If you have a reverse proxy with SSL for this, it needs to be enabled. |
 
-3. Deploy the Docker composition.
+1. Deploy the Docker composition.
 
 ```
 $ docker-compose -f path/to/repository/docker-compose.yml

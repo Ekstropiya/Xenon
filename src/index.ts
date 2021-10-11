@@ -15,8 +15,8 @@ const app = express();
 
 // Import configured SSL certificates.
 const ssl = {
-    cert: (config.ssl["use"]) ? fs.readFileSync(`${__dirname}/../ssl/${config.ssl["cert"]}`) : "",
-    key: (config.ssl["use"]) ? fs.readFileSync(`${__dirname}/../ssl/${config.ssl["key"]}`) : "",
+    cert: (config.ssl["use"] || process.env["XENON_USE_SSL"]) ? fs.readFileSync(`${__dirname}/../ssl/${config.ssl["cert"]}`) : "",
+    key: (config.ssl["use"] || process.env["XENON_USE_SSL"]) ? fs.readFileSync(`${__dirname}/../ssl/${config.ssl["key"]}`) : "",
 };
 
 (async () => {
@@ -102,12 +102,13 @@ const ssl = {
     };
 
     // If user has enabled SSL create an HTTPS server, otherwise, create a standard HTTP server.
-    const server = (config.ssl["use"]) ? https.createServer(ssl, app) : http.createServer(app);
+    const server = (config.ssl["use"] || process.env["XENON_USE_SSL"]) ? https.createServer(ssl, app) : http.createServer(app);
 
     const proxy = new Corrosion({
         prefix: "/p/",
         codec: "xor",
         responseMiddleware: [ middle ],
+        title: "Xenon",
     });
 
     proxy.bundleScripts();

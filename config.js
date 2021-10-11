@@ -2,8 +2,8 @@ module.exports = {
     "container": true,
     "ssl": {
         "use": false,
-        "cert": "",
-        "key": "",
+        "cert": "ssl.cert",
+        "key": "ssl.key",
     },
     "address": {
         "range": process.env["XENON_ADDR_RANGE"],

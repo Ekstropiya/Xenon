@@ -28,6 +28,7 @@ services:
       - "XENON_DB_PASSWORD=${DB_PASSWORD:-postgres}"
       - "XENON_LOG_CONSOLE=${LOGGING_CONSOLE:-true}"
       - "XENON_LOG_DATABASE=${LOGGING_DATABASE:-true}"
+      - "XENON_USE_SSL=${USE_SSL:-false}"
     stdin_open: true
     tty: true
 
