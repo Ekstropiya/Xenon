@@ -5,10 +5,10 @@
 This Xenon instance is graciously hosted by: ______________
 
 Welcome, and thank you for choosing Xenon Web Service. Here
-at the Omnicron Corporation we strive to provide the best
-products and services possible. Xenon is one of our many
-services written by our brilliant programmers. Here are a
-few short notes to keep in-mind when using Xenon:
+at the Omnicron Corporation we are committed to providing
+the best products and services possible. Xenon is one of our
+many services written by our brilliant programmers. Here are
+a few short notes to keep in-mind when using Xenon:
 
 +-------+
 | NOTES |
