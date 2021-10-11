@@ -12,7 +12,7 @@ Fetch requests chronologically. By default it will only return the first request
 |       Key | Example | Default Value | Aliases | Description                                       |
 | --------: | :------ | :------------ | ------- | ------------------------------------------------- |
 | ``begin`` | ``5``   | ``0``         | ``b``   | Will begin the list at the nth request ever made. |
-|   ``end`` | ``30``  | ``0``         | ``e``   | Will end the list at the nth request ever made.   |
+|   ``end`` | ``30``  | ``15``         | ``e``   | Will end the list at the nth request ever made.   |
 
 ###### Example Response
 
