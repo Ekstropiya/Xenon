@@ -53,6 +53,7 @@ body {
 
 h1 {
     letter-spacing: 6px;
+    line-height: 100%;
 }
 
 h4 {
@@ -67,7 +68,7 @@ a:link {
 }
 
 .body-wrapper div {
-    letter-spacing: 0.6px;
+    letter-spacing: 1px;
     color: var(--textcolor);
     align-items: center;
     display: flex;
